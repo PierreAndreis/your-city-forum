@@ -34,6 +34,14 @@ textarea {
   color: ${({ theme: { colors } }) => colors.textInPrimary};
 }
 
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
 @media (min-width: 700px) {
   :root {
     font-size: 62.5%;
