@@ -1,23 +1,19 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
 
+import AppContext from './contexts';
 import Routes from './routes';
 
 import GlobalStyles from './styles/global';
 
-import dark from './styles/themes/dark';
-
-const App: React.FC = () => {
-  return (
-    <ThemeProvider theme={dark}>
-      <Router>
-        <Routes />
-      </Router>
+const App: React.FC = () => (
+  <Router>
+    <AppContext>
+      <Routes />
 
       <GlobalStyles />
-    </ThemeProvider>
-  );
-};
+    </AppContext>
+  </Router>
+);
 
 export default App;

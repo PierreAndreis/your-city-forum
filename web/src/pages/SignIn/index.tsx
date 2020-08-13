@@ -1,7 +1,9 @@
 import React, { useCallback } from 'react';
 import { Form } from '@unform/web';
-import { FiMail, FiLock, FiUser, FiChevronRight } from 'react-icons/fi';
+import { FiLock, FiUser, FiChevronRight } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
+
+import { useAuth } from '../../contexts/auth/authContext';
 
 import { Input, Button } from '../../components';
 
@@ -12,10 +14,25 @@ import {
   ButtonsContainer,
 } from './styles';
 
+interface SignInFormData {
+  username: string;
+  password: string;
+}
+
 const SignIn: React.FC = () => {
-  const handleSubmit = useCallback(data => {
-    console.log(data);
-  }, []);
+  const { signIn } = useAuth();
+
+  const handleSubmit = useCallback(
+    async (payload: SignInFormData) => {
+      const { username, password } = payload;
+
+      await signIn({
+        username,
+        password,
+      });
+    },
+    [signIn],
+  );
 
   return (
     <Container>
