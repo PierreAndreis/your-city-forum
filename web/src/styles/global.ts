@@ -31,7 +31,7 @@ input,
 button,
 textarea {
   font: 500 1.6rem Roboto;
-  color: #fff;
+  color: ${({ theme: { colors } }) => colors.textInPrimary};
 }
 
 @media (min-width: 700px) {
