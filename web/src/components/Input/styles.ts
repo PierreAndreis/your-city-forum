@@ -1,11 +1,35 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 interface ContainerProps {
   isFilled: number;
   isFocused: number;
 }
 
+const opacityShift = keyframes`
+  0% {
+    bottom: -1.5rem;
+    opacity: 0;
+    visibility: hidden;
+  }
+  5% {
+    opacity: 1;
+    bottom: -2.5rem;
+    visibility: initial;
+  }
+  80% {
+    opacity: 1;
+    bottom: -2.5rem;
+    visibility: initial;
+  }
+  100% {
+    bottom: -1.5rem;
+    opacity: 0;
+    
+  }
+`;
+
 export const Container = styled.div<ContainerProps>`
+  position: relative;
   width: 100%;
   margin-top: 6.4rem;
   transition: all 500ms;
@@ -37,6 +61,23 @@ export const Container = styled.div<ContainerProps>`
     ::placeholder {
       color: ${({ theme: { colors } }) => colors.labelInDark};
     }
+  }
+
+  span {
+    position: absolute;
+    bottom: -2.5rem;
+    text-align: center;
+
+    width: 100%;
+    height: 2.2rem;
+    background-color: ${({ theme: { colors } }) => colors.primaryDarker};
+    color: white;
+    border-radius: 0 0 0.4rem 0.4rem;
+
+    opacity: 0;
+    visibility: hidden;
+
+    animation: ${opacityShift} 4s ease-in-out backwards;
   }
 `;
 

@@ -37,7 +37,7 @@ const AuthContainer: React.FC = ({ children }) => {
   );
 
   const signOut = useCallback(() => {
-    localStorage.removeItem('@LOUNDgg');
+    localStorage.removeItem('@LOUNDgg:token');
 
     setData({ logged: false });
   }, []);

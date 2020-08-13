@@ -1,9 +1,13 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useRef } from 'react';
 import { Form } from '@unform/web';
+import { FormHandles } from '@unform/core';
 import { FiLock, FiUser, FiChevronRight } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
+import * as Yup from 'yup';
+import { toast } from 'react-toastify';
 
 import { useAuth } from '../../contexts/auth/authContext';
+import getValidationsErrors from '../../utils/getValidationErrors';
 
 import { Input, Button } from '../../components';
 
@@ -22,14 +26,52 @@ interface SignInFormData {
 const SignIn: React.FC = () => {
   const { signIn } = useAuth();
 
+  const formRef = useRef<FormHandles>(null);
+
   const handleSubmit = useCallback(
     async (payload: SignInFormData) => {
-      const { username, password } = payload;
+      try {
+        const { username, password } = payload;
 
-      await signIn({
-        username,
-        password,
-      });
+        formRef.current?.setErrors({});
+
+        const schema = Yup.object().shape({
+          username: Yup.string()
+            .matches(
+              /^[a-zA-Z0-9]{4,30}$/,
+              'Não utilize caracteres especiais | Min 4 Caracteres',
+            )
+            .required('Preencha seu nome de usuário'),
+          password: Yup.string()
+            .matches(
+              /^[a-zA-Z0-9]{8,30}$/,
+              'Não utilize caracteres especiais | Min 8 Caracteres',
+            )
+            .required('Preecha sua senha'),
+        });
+
+        await schema.validate(payload, { abortEarly: false });
+
+        formRef.current?.reset();
+
+        await signIn({
+          username,
+          password,
+        });
+      } catch (err) {
+        if (err instanceof Yup.ValidationError) {
+          const errors = getValidationsErrors(err);
+
+          formRef.current?.setErrors(errors);
+        }
+
+        toast(
+          'Erro inesperado, verifique suas credenciais e tente novamente!',
+          {
+            type: 'error',
+          },
+        );
+      }
     },
     [signIn],
   );
@@ -40,7 +82,7 @@ const SignIn: React.FC = () => {
         <ContainerAnimated>
           <h1>Sign In</h1>
 
-          <Form onSubmit={handleSubmit}>
+          <Form ref={formRef} onSubmit={handleSubmit}>
             <Input
               name="username"
               autoComplete="off"
