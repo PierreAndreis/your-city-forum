@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 interface ContainerProps {
   isFilled: number;
@@ -11,18 +11,19 @@ export const Container = styled.div<ContainerProps>`
   transition: all 500ms;
 
   border-bottom: 1px solid
-    ${({ isFocused }) => (isFocused ? '#00FF66' : '#eee')};
+    ${({ isFocused, theme: { colors } }) =>
+      isFocused ? colors.primary : colors.labelInPrimary};
 
   label {
     width: 100%;
-    color: #858585;
+    color: ${({ theme: { colors } }) => colors.labelInPrimary};
     font-size: 1.8rem;
 
     svg {
       transition: all 500ms;
 
-      color: ${({ isFocused, isFilled }) =>
-        isFocused || isFilled ? '#00FF66' : '#eee'};
+      color: ${({ isFocused, isFilled, theme: { colors } }) =>
+        isFocused || isFilled ? colors.primary : colors.labelInPrimary};
     }
   }
 
@@ -34,7 +35,7 @@ export const Container = styled.div<ContainerProps>`
     line-height: 2.4rem;
 
     ::placeholder {
-      color: #a3a3a3;
+      color: ${({ theme: { colors } }) => colors.labelInDark};
     }
   }
 `;
