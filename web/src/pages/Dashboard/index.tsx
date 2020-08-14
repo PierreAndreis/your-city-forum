@@ -1,18 +1,43 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { Form } from '@unform/web';
+import { FiPlus } from 'react-icons/fi';
 
-import { useAuth } from '../../contexts/auth/authContext';
+import { Header, SearchInput } from '../../components';
 
-import { Container } from './styles';
+import {
+  Container,
+  Wrapper,
+  ContentContainer,
+  ActionsContainer,
+} from './styles';
+
+interface FormData {
+  filter: string;
+}
 
 const Dashboard: React.FC = () => {
-  const { signOut } = useAuth();
+  const handleSearchSubmit = useCallback((data: FormData) => {
+    console.log(data);
+  }, []);
 
   return (
     <Container>
-      <h1>DashBoard</h1>
-      <button type="button" onClick={signOut}>
-        Logout
-      </button>
+      <Header />
+
+      <Wrapper>
+        <ContentContainer>
+          <Form onSubmit={handleSearchSubmit}>
+            <ActionsContainer>
+              <SearchInput name="filter" />
+
+              <button type="button">
+                Criar tópico
+                <FiPlus size={18} />
+              </button>
+            </ActionsContainer>
+          </Form>
+        </ContentContainer>
+      </Wrapper>
     </Container>
   );
 };

@@ -6,8 +6,12 @@ export interface DefaultThemeColors {
     primary: string;
     primaryDark: string;
     primaryDarker: string;
+    secundaryLighter: string;
+    secundaryLight: string;
+    secundary: string;
     textInPrimary: string;
     textInDark: string;
+    textInSecundary: string;
     labelInPrimary: string;
     labelInDark: string;
   };
