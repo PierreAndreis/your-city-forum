@@ -26,17 +26,18 @@ export const Wrapper = styled.div`
 
 export const ContentContainer = styled.section`
   display: flex;
+  flex-direction: column;
   max-width: 1120px;
   margin: 0 auto;
 
   form {
     width: 100%;
+    margin: 3.2rem 0 6.4rem;
   }
 `;
 
 export const ActionsContainer = styled.header`
   width: 100%;
-  margin-top: 3.2rem;
   display: grid;
   grid-template-columns: auto 18rem;
   grid-column-gap: 1rem;
@@ -79,4 +80,10 @@ export const ActionsContainer = styled.header`
       margin-top: 1.6rem;
     }
   }
+`;
+
+export const TopicsList = styled.main`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 `;
