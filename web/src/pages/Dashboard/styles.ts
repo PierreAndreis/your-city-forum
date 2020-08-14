@@ -53,6 +53,7 @@ export const ActionsContainer = styled.header`
     border: 2px solid ${({ theme: { colors } }) => colors.primaryDarker};
     border-radius: 0.6rem;
     transition: all 400ms;
+    cursor: pointer;
 
     svg {
       margin-left: 1rem;

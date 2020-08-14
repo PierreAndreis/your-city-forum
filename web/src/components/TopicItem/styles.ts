@@ -11,15 +11,17 @@ export const Container = styled.div`
     color: #fff;
 
     width: 100%;
+    height: 9rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 3.2rem;
-    border-radius: 0.6rem;
-    height: 10rem;
+    letter-spacing: 0.1rem;
     transition: all 400ms;
+    border-radius: 0.6rem;
+    border-left: 0.3rem solid
+      ${({ theme: { colors } }) => colors.secundaryLight};
     background-color: ${({ theme: { colors } }) => colors.secundaryLight};
-    border: 2px solid ${({ theme: { colors } }) => colors.secundaryLight};
 
     &:hover {
       border-left-color: ${({ theme: { colors } }) => colors.primaryDarker};
@@ -37,6 +39,7 @@ export const Container = styled.div`
 
       h2 {
         font-size: 2rem;
+        color: ${({ theme: { colors } }) => colors.textInDark};
       }
     }
 
@@ -50,6 +53,7 @@ export const Container = styled.div`
         font-family: RobotoSlab;
         font-size: 2.4rem;
         letter-spacing: 0.1rem;
+        color: ${({ theme: { colors } }) => colors.textInDark};
 
         span {
           height: 100%;
@@ -58,6 +62,7 @@ export const Container = styled.div`
           position: relative;
           font-family: Roboto;
           margin-left: 3.8rem;
+          color: ${({ theme: { colors } }) => colors.textInPrimary};
 
           &::before {
             content: '';
