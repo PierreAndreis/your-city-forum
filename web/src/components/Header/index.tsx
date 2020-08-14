@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FiPower } from 'react-icons/fi';
 
 import { useAuth } from '../../contexts/auth/authContext';
@@ -19,7 +20,7 @@ const Header: React.FC = () => {
           <strong>Olá</strong> <span>Dtesch</span>
         </Profile>
 
-        <h1>Fórum</h1>
+        <Link to="/">Fórum</Link>
 
         <button aria-label="Logout" type="button" onClick={signOut}>
           <FiPower size={20} />

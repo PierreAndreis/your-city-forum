@@ -18,10 +18,6 @@ export const Container = styled.div`
 export const Wrapper = styled.div`
   padding: 0 3.2rem;
   height: 100%;
-
-  > h1 {
-    margin-top: 6.4rem;
-  }
 `;
 
 export const ContentContainer = styled.section`

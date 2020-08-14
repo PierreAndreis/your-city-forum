@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FiMessageSquare } from 'react-icons/fi';
 
 import { Container } from './styles';
@@ -6,7 +7,7 @@ import { Container } from './styles';
 const TopicItem: React.FC = () => {
   return (
     <Container>
-      <a href="/#">
+      <Link to="/topic">
         <section>
           <FiMessageSquare />
           <h2>Buraco na rua Chile</h2>
@@ -17,7 +18,7 @@ const TopicItem: React.FC = () => {
             Votos <span>0</span>
           </strong>
         </aside>
-      </a>
+      </Link>
     </Container>
   );
 };

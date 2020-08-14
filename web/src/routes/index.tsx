@@ -6,6 +6,7 @@ import Route from './Route';
 import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
 import Dashboard from '../pages/Dashboard';
+import ShowTopic from '../pages/ShowTopic';
 import NotFoundPage from '../pages/NotFoundPage';
 
 const Routes: React.FC = () => {
@@ -15,6 +16,7 @@ const Routes: React.FC = () => {
       <Route path="/signup" component={SignUp} />
 
       <Route path="/dashboard" component={Dashboard} isPrivate />
+      <Route path="/topic" component={ShowTopic} isPrivate />
 
       <Route component={NotFoundPage} />
     </Switch>

@@ -16,14 +16,19 @@ export const Wrapper = styled.div`
   justify-content: space-between;
   max-width: 1330px;
 
-  h1 {
+  a {
     font-family: RobotoSlab;
     font-weight: 500;
     font-size: 2rem;
     color: ${({ theme: { colors } }) => colors.textInSecundary};
     letter-spacing: 0.1rem;
+    transition: color 400ms;
     position: absolute;
     left: 50%;
+
+    &:hover {
+      color: ${({ theme: { colors } }) => colors.primary};
+    }
   }
 
   button {
@@ -39,7 +44,7 @@ export const Wrapper = styled.div`
   }
 
   @media (max-width: 600px) {
-    h1 {
+    a {
       font-size: 1.8rem;
       position: initial;
     }
