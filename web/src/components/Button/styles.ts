@@ -18,6 +18,7 @@ export const Container = styled.div`
     background: none;
     border: 0;
     padding: 0 3.2rem;
+    cursor: pointer;
     transition: background-color 400ms;
 
     &:hover {

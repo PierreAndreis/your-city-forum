@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 import { FiMail, FiLock, FiUser, FiChevronRight } from 'react-icons/fi';
@@ -6,8 +6,9 @@ import { Link, useHistory } from 'react-router-dom';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 
+import api from '../../services/api';
 import getValidationsErrors from '../../utils/getValidationErrors';
-import { Input, Button } from '../../components';
+import { Input, Button, Loading } from '../../components';
 
 import {
   Container,
@@ -15,7 +16,6 @@ import {
   ContainerAnimated,
   ButtonsContainer,
 } from './styles';
-import api from '../../services/api';
 
 interface SignUpFormData {
   email: string;
@@ -27,9 +27,13 @@ const SignUp: React.FC = () => {
   const { push } = useHistory();
   const formRef = useRef<FormHandles>(null);
 
+  const [loading, setLoading] = useState(false);
+
   const handleSubmit = useCallback(
     async (payload: SignUpFormData) => {
       try {
+        setLoading(true);
+
         const { email, username, password } = payload;
 
         formRef.current?.setErrors({});
@@ -82,6 +86,8 @@ const SignUp: React.FC = () => {
             type: 'error',
           },
         );
+      } finally {
+        setLoading(false);
       }
     },
     [push],
@@ -123,8 +129,9 @@ const SignUp: React.FC = () => {
                 containerStyle={{ width: '48%' }}
                 type="submit"
                 icon={FiChevronRight}
+                disabled={loading}
               >
-                Cadastrar
+                {loading ? <Loading size={20} color="#fff" /> : 'Cadastrar'}
               </Button>
 
               <Link to="/">{`Voltar para o Login <`}</Link>

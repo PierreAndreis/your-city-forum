@@ -29,6 +29,8 @@ export const ContentContainer = styled.section`
   flex-direction: column;
   max-width: 1120px;
   margin: 0 auto;
+  min-height: 100%;
+  height: 100%;
 
   form {
     width: 100%;

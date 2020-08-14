@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { Form } from '@unform/web';
 import { FiPlus } from 'react-icons/fi';
 
-import { Header, SearchInput, TopicItem } from '../../components';
+import { Header, SearchInput, TopicItem, Loading } from '../../components';
 
 import {
   Container,
@@ -37,6 +37,12 @@ const Dashboard: React.FC = () => {
               </button>
             </ActionsContainer>
           </Form>
+
+          {/* <Loading
+            containerStyle={{ marginTop: '-200px' }}
+            size={70}
+            color="#00FF66"
+          /> */}
 
           <TopicsList>
             <TopicItem />

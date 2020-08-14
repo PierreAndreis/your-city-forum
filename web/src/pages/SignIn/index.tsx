@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 import { FiLock, FiUser, FiChevronRight } from 'react-icons/fi';
@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 import { useAuth } from '../../contexts/auth/authContext';
 import getValidationsErrors from '../../utils/getValidationErrors';
 
-import { Input, Button } from '../../components';
+import { Input, Button, Loading } from '../../components';
 
 import {
   Container,
@@ -25,12 +25,15 @@ interface SignInFormData {
 
 const SignIn: React.FC = () => {
   const { signIn } = useAuth();
-
   const formRef = useRef<FormHandles>(null);
+
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = useCallback(
     async (payload: SignInFormData) => {
       try {
+        setLoading(true);
+
         const { username, password } = payload;
 
         formRef.current?.setErrors({});
@@ -71,6 +74,8 @@ const SignIn: React.FC = () => {
             type: 'error',
           },
         );
+      } finally {
+        setLoading(false);
       }
     },
     [signIn],
@@ -104,8 +109,9 @@ const SignIn: React.FC = () => {
                 containerStyle={{ width: '48%' }}
                 type="submit"
                 icon={FiChevronRight}
+                disabled={loading}
               >
-                Logar
+                {loading ? <Loading size={20} color="#fff" /> : 'Logar'}
               </Button>
 
               <Link to="/signup">Não tem conta ?</Link>
