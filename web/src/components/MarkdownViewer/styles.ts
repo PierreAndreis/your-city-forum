@@ -13,10 +13,6 @@ export const Container = styled(ReactMarkdown)`
   color: white;
   word-break: break-all;
 
-  /* * {
-    word-break: break-all;
-  } */
-
   h1,
   h2,
   h3,
@@ -30,8 +26,14 @@ export const Container = styled(ReactMarkdown)`
   }
 
   p {
+    display: flex;
+    justify-content: flex-start;
     margin-top: 1.2rem;
     font-size: 2.2rem;
+
+    img {
+      margin: 0 auto;
+    }
   }
 
   li {
@@ -43,7 +45,6 @@ export const Container = styled(ReactMarkdown)`
     height: 100%;
     max-width: 20rem;
     border-radius: 0.6rem;
-    transform: translateX(calc(50% + 5rem));
   }
 
   pre {

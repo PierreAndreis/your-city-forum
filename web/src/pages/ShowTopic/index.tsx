@@ -1,20 +1,15 @@
-import React, { useState, ChangeEvent, useCallback } from 'react';
+import React from 'react';
 
 import { Header, MarkdownViewer } from '../../components';
 
 import { Container, Wrapper, ContentContainer, MarkDownEditor } from './styles';
 
 const ShowTopic: React.FC = () => {
-  const [markdown, setMarkdown] = useState('');
-
-  const handleChange = useCallback(
-    (e: ChangeEvent<HTMLTextAreaElement>): void => {
-      console.log(e.target.value);
-
-      setMarkdown(e.target.value);
-    },
-    [],
-  );
+  const mdWhile = `## Test \n
+  Paragrafer \n\n
+  [Link](https://google.com) \n\n
+  ![Link](https://github.com/Dtesch9.png) \n\n
+  `;
 
   return (
     <Container>
@@ -23,9 +18,7 @@ const ShowTopic: React.FC = () => {
       <Wrapper>
         <ContentContainer>
           <MarkDownEditor>
-            <textarea onChange={handleChange} value={markdown} />
-
-            <MarkdownViewer className="preview" source={markdown} />
+            <MarkdownViewer className="preview" source={mdWhile} />
           </MarkDownEditor>
         </ContentContainer>
       </Wrapper>
