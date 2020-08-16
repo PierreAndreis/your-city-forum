@@ -17,7 +17,12 @@ type TopicItemProps = {
 const TopicItem: React.FC<TopicItemProps> = ({ opinion }) => {
   return (
     <Container>
-      <Link to="/topic">
+      <Link
+        to={{
+          pathname: '/topic',
+          state: { opinionId: opinion.id },
+        }}
+      >
         <section>
           <FiMessageSquare />
           <h2>{opinion.title}</h2>

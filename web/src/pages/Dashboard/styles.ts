@@ -18,7 +18,7 @@ export const Container = styled.div`
 
 export const Wrapper = styled.div`
   margin-top: 8rem;
-  padding: 0 3.2rem;
+  padding: 0 3.2rem 3.8rem;
   height: 100%;
   overflow: initial;
 `;
@@ -88,4 +88,5 @@ export const TopicsList = styled.main`
   display: flex;
   flex-direction: column;
   width: 100%;
+  margin-bottom: 3.2rem;
 `;
