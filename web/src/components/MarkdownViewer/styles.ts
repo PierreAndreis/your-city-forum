@@ -6,7 +6,7 @@ export const Container = styled(ReactMarkdown)`
   padding-right: 2rem;
   background: ${({ theme: { colors } }) => colors.secundary};
   padding: 2rem 3rem;
-  border-radius: 0 5px 5px 0;
+  border-radius: 5px;
   margin: 0;
   width: 49%;
   min-height: 50rem;

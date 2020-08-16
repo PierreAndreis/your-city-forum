@@ -1,13 +1,14 @@
 import React from 'react';
+import { FiChevronUp, FiChevronDown } from 'react-icons/fi';
 
 import { Header, MarkdownViewer } from '../../components';
 
-import { Container, Wrapper, ContentContainer, MarkDownEditor } from './styles';
+import { Container, Wrapper, ContentContainer, TopicContainer } from './styles';
 
 const ShowTopic: React.FC = () => {
   const mdWhile = `## Test \n
-  Paragrafer \n\n
-  [Link](https://google.com) \n\n
+  Github below \n\n
+  [Dtesch](https://github.com/Dtesch9) \n\n
   ![Link](https://github.com/Dtesch9.png) \n\n
   `;
 
@@ -17,9 +18,18 @@ const ShowTopic: React.FC = () => {
 
       <Wrapper>
         <ContentContainer>
-          <MarkDownEditor>
+          <TopicContainer>
             <MarkdownViewer className="preview" source={mdWhile} />
-          </MarkDownEditor>
+            <aside>
+              <button type="button">
+                <FiChevronUp />
+              </button>
+              <span>0</span>
+              <button type="button">
+                <FiChevronDown />
+              </button>
+            </aside>
+          </TopicContainer>
         </ContentContainer>
       </Wrapper>
     </Container>
