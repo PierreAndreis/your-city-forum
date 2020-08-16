@@ -1,8 +1,12 @@
 import React, { useState, useCallback } from 'react';
 import { Form } from '@unform/web';
 import { FiEye, FiEyeOff, FiX } from 'react-icons/fi';
+import * as Yup from 'yup';
+import { toast } from 'react-toastify';
 
-import { NakedInput, Textarea, MarkdownViewer } from '..';
+import api from '../../services/api';
+
+import { NakedInput, Textarea, MarkdownViewer, Loading } from '..';
 
 import { Container, Content, ModalBox, Footer } from './styles';
 
@@ -18,6 +22,7 @@ interface FormData {
 const TopicModal: React.FC<TopicModalProps> = ({ closeModal }) => {
   const [toggleMdViewer, setToggleMdViewer] = useState(false);
   const [markdown, setMarkdown] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleCloseModal = useCallback(() => {
     closeModal();
@@ -31,9 +36,48 @@ const TopicModal: React.FC<TopicModalProps> = ({ closeModal }) => {
     setMarkdown(mdValue);
   }, []);
 
-  const handleSubmitForm = useCallback((data: FormData) => {
-    console.log(data);
-  }, []);
+  const handleSubmitForm = useCallback(
+    async (payload: FormData) => {
+      try {
+        setLoading(true);
+
+        const { title, content } = payload;
+
+        const schema = Yup.object().shape({
+          title: Yup.string().required('Preencha o título'),
+
+          content: Yup.string().required('Preecha o conteúdo'),
+        });
+
+        await schema.validate(payload, { abortEarly: false });
+
+        await api.post('/opinions', {
+          title,
+          content,
+        });
+
+        handleCloseModal();
+
+        toast('Tópico criado com sucesso!', { type: 'success' });
+      } catch (err) {
+        if (err instanceof Yup.ValidationError) {
+          toast('Preecha todos os dados corretamente!', { type: 'warning' });
+
+          return;
+        }
+
+        toast(
+          'Erro inesperado, verifique suas credenciais, relogue e tente novamente!',
+          {
+            type: 'error',
+          },
+        );
+      } finally {
+        setLoading(false);
+      }
+    },
+    [handleCloseModal],
+  );
 
   return (
     <Container>
@@ -80,7 +124,9 @@ const TopicModal: React.FC<TopicModalProps> = ({ closeModal }) => {
                   {toggleMdViewer ? <FiEyeOff /> : <FiEye />}
                 </button>
 
-                <button type="submit">Postar</button>
+                <button type="submit" disabled={loading}>
+                  {loading ? <Loading size={20} color="#fff" /> : 'Postar'}
+                </button>
               </aside>
             </Footer>
           </Form>

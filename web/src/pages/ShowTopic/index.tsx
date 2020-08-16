@@ -31,11 +31,19 @@ const ShowTopic: React.FC = () => {
             <TopicContainer>
               <MarkdownViewer className="preview" source={mdWhile} />
               <aside>
-                <button type="button" onClick={handlePlusClick}>
+                <button
+                  aria-label="Plus vote"
+                  type="button"
+                  onClick={handlePlusClick}
+                >
                   <FiChevronUp />
                 </button>
                 <span>0</span>
-                <button type="button" onClick={handleMinusClick}>
+                <button
+                  aria-label="Minus vote"
+                  type="button"
+                  onClick={handleMinusClick}
+                >
                   <FiChevronDown />
                 </button>
               </aside>

@@ -19,5 +19,3 @@ export default {
     labelInDark: '#a3a3a3',
   },
 };
-
-// '#312e38'

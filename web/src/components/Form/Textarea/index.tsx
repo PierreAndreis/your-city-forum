@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  ChangeEvent,
-  useCallback,
-  useRef,
-  useEffect,
-} from 'react';
+import React, { ChangeEvent, useCallback, useRef, useEffect } from 'react';
 import { useField } from '@unform/core';
 
 import { Container } from './styles';

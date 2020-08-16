@@ -86,16 +86,22 @@ export const Container = styled.div`
 
         h2 {
           font-size: calc(min(1.8rem, 4vw));
-
-          @media (max-width: 360px) {
-            width: 6.8rem;
-          }
         }
       }
 
       aside {
         strong {
           font-size: 2rem;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 499px) {
+    a {
+      section {
+        svg {
+          display: none;
         }
       }
     }

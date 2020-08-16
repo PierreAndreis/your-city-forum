@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 interface ContainerProps {
   isFocused: number;
@@ -12,7 +12,23 @@ export const Container = styled.div<ContainerProps>`
   align-items: center;
   padding: 0 1.2rem;
   border-radius: 0.6rem;
+  position: relative;
   background: ${({ theme: { colors } }) => colors.secundary};
+
+  &::after {
+    ${({ isFocused }) =>
+      isFocused &&
+      css`
+        content: '';
+        position: absolute;
+        bottom: 1px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 95%;
+        height: 2px;
+        background: ${({ theme: { colors } }) => colors.primaryDarker};
+      `}
+  }
 
   > button {
     width: 2rem;
