@@ -22,26 +22,28 @@ const ShowTopic: React.FC = () => {
   `;
 
   return (
-    <Container>
+    <>
       <Header />
 
-      <Wrapper>
-        <ContentContainer>
-          <TopicContainer>
-            <MarkdownViewer className="preview" source={mdWhile} />
-            <aside>
-              <button type="button" onClick={handlePlusClick}>
-                <FiChevronUp />
-              </button>
-              <span>0</span>
-              <button type="button" onClick={handleMinusClick}>
-                <FiChevronDown />
-              </button>
-            </aside>
-          </TopicContainer>
-        </ContentContainer>
-      </Wrapper>
-    </Container>
+      <Container>
+        <Wrapper>
+          <ContentContainer>
+            <TopicContainer>
+              <MarkdownViewer className="preview" source={mdWhile} />
+              <aside>
+                <button type="button" onClick={handlePlusClick}>
+                  <FiChevronUp />
+                </button>
+                <span>0</span>
+                <button type="button" onClick={handleMinusClick}>
+                  <FiChevronDown />
+                </button>
+              </aside>
+            </TopicContainer>
+          </ContentContainer>
+        </Wrapper>
+      </Container>
+    </>
   );
 };
 

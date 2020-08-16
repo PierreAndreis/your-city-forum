@@ -35,9 +35,9 @@ const Dashboard: React.FC = () => {
 
   return (
     <>
-      <Container>
-        <Header />
+      <Header />
 
+      <Container>
         <Wrapper>
           <ContentContainer>
             <Form onSubmit={handleSearchSubmit}>

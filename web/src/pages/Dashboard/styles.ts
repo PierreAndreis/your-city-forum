@@ -13,11 +13,14 @@ export const Container = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow: auto;
 `;
 
 export const Wrapper = styled.div`
+  margin-top: 8rem;
   padding: 0 3.2rem;
   height: 100%;
+  overflow: initial;
 `;
 
 export const ContentContainer = styled.section`

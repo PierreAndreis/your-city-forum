@@ -5,11 +5,14 @@ export const Container = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 `;
 
 export const Wrapper = styled.div`
   padding: 0 3.2rem;
   height: 100%;
+  margin-top: 8rem;
+  overflow: auto;
 `;
 
 export const ContentContainer = styled.section`

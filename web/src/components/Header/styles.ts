@@ -5,7 +5,10 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   padding: 1.4rem 6.4rem;
-  position: relative;
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+  top: 0;
   background: ${({ theme: { colors } }) => colors.secundary};
 `;
 
