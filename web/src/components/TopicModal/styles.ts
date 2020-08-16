@@ -1,4 +1,20 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const spin = keyframes`
+  from { 
+    transform: rotate(0deg); 
+  } to { 
+    transform: rotate(360deg); 
+  }
+`;
+
+const fadeOutOpacity = keyframes`
+  from { 
+    opacity: 0;
+  } to { 
+    opacity: 1;
+  }
+`;
 
 export const Container = styled.div`
   background: rgba(0, 0, 0, 0.7);
@@ -27,15 +43,35 @@ export const ModalBox = styled.div`
   border-radius: 6px;
   background: ${({ theme: { colors } }) => colors.secundary};
 
+  animation: ${fadeOutOpacity} 400ms;
+
   header {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 2.4rem 3.8rem 0;
 
     h1 {
       font-weight: 500;
       font-size: 2.8rem;
       color: ${({ theme: { colors } }) => colors.labelInPrimary};
+    }
+
+    button {
+      border: 0;
+      background: none;
+      cursor: pointer;
+
+      svg {
+        font-size: 2.4rem;
+        transition: all 400ms;
+
+        &:hover {
+          color: ${({ theme: { colors } }) => colors.primary};
+
+          animation: ${spin} 1s;
+        }
+      }
     }
   }
 
@@ -101,7 +137,7 @@ export const ModalBox = styled.div`
       }
 
       textarea,
-      .preview {
+      .preview-markdown {
         &::placeholder {
           font-size: 2rem;
         }

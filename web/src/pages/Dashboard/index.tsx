@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import { Form } from '@unform/web';
 import { FiPlus } from 'react-icons/fi';
 
@@ -23,6 +23,12 @@ interface FormData {
 }
 
 const Dashboard: React.FC = () => {
+  const [toggleTopicVisible, setToggleTopicVisible] = useState(false);
+
+  const handleToggleTopicModal = useCallback(() => {
+    setToggleTopicVisible(state => !state);
+  }, []);
+
   const handleSearchSubmit = useCallback((data: FormData) => {
     console.log(data);
   }, []);
@@ -38,7 +44,7 @@ const Dashboard: React.FC = () => {
               <ActionsContainer>
                 <SearchInput name="filter" />
 
-                <button type="button">
+                <button type="button" onClick={handleToggleTopicModal}>
                   Criar tópico
                   <FiPlus size={18} />
                 </button>
@@ -63,7 +69,7 @@ const Dashboard: React.FC = () => {
         </Wrapper>
       </Container>
 
-      <TopicModal />
+      {toggleTopicVisible && <TopicModal closeModal={handleToggleTopicModal} />}
     </>
   );
 };
