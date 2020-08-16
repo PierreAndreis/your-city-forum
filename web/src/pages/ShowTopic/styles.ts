@@ -33,6 +33,7 @@ export const TopicContainer = styled.div`
 
   .preview {
     width: 100%;
+    min-height: 50rem;
     border-radius: 5px 0 0 5px;
     transition: all 400ms;
   }

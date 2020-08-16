@@ -1,21 +1,26 @@
 import React, { useState, useCallback } from 'react';
 import { Form } from '@unform/web';
+import { FiEye, FiEyeOff } from 'react-icons/fi';
 
-import { NakedInput, Textarea } from '..';
+import { NakedInput, Textarea, MarkdownViewer } from '..';
 
-import { Container, Content, ModalBox } from './styles';
+import { Container, Content, ModalBox, Footer } from './styles';
 
 interface FormData {
   title: string;
   content: string;
 }
 
-interface TopicModalProps {
-  toggleTopic?(): void;
-}
-
-const TopicModal: React.FC<TopicModalProps> = ({ toggleTopic }) => {
+const TopicModal: React.FC = () => {
+  const [toggleMdViewer, setToggleMdViewer] = useState(false);
   const [markdown, setMarkdown] = useState('');
+
+  // Insert markdown on MarkdownViewer
+  // Create a See button to toggle MarkdownViewer
+
+  const handleToggleViewer = useCallback(() => {
+    setToggleMdViewer(state => !state);
+  }, []);
 
   const handleTextareaChange = useCallback((mdValue: string) => {
     setMarkdown(mdValue);
@@ -34,15 +39,37 @@ const TopicModal: React.FC<TopicModalProps> = ({ toggleTopic }) => {
           </header>
 
           <Form onSubmit={handleSubmitForm}>
-            <NakedInput name="title" placeholder="Título" />
+            <div aria-label="Inputs container">
+              <NakedInput name="title" placeholder="Título" />
 
-            <Textarea
-              name="content"
-              placeholder="Informe o problema"
-              retrieveValue={handleTextareaChange}
-            />
+              {toggleMdViewer ? (
+                <MarkdownViewer
+                  className="preview-markdown"
+                  source={markdown}
+                />
+              ) : (
+                <Textarea
+                  name="content"
+                  placeholder="Informe o problema"
+                  retrieveValue={handleTextareaChange}
+                  value={markdown}
+                />
+              )}
+            </div>
 
-            <button type="submit">submit</button>
+            <Footer>
+              <aside>
+                <button
+                  type="button"
+                  aria-label="Markdown toggle button"
+                  onClick={handleToggleViewer}
+                >
+                  {toggleMdViewer ? <FiEyeOff /> : <FiEye />}
+                </button>
+
+                <button type="submit">Postar</button>
+              </aside>
+            </Footer>
           </Form>
         </ModalBox>
       </Content>

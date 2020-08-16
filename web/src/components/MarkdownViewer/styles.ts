@@ -9,7 +9,6 @@ export const Container = styled(ReactMarkdown)`
   border-radius: 5px;
   margin: 0;
   width: 49%;
-  min-height: 50rem;
   color: white;
   word-break: break-all;
 

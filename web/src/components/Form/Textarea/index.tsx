@@ -11,22 +11,20 @@ import { Container } from './styles';
 
 interface Props {
   name: string;
+  value: string;
   retrieveValue(mdValue: string): void;
 }
 
 type TextareaProps = JSX.IntrinsicElements['textarea'] & Props;
 
 const Textarea: React.FC<TextareaProps> = props => {
-  const { name, placeholder, retrieveValue } = props;
+  const { name, placeholder, retrieveValue, value } = props;
 
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const { fieldName, registerField, defaultValue } = useField(name);
 
-  const [markdown, setMarkdown] = useState('');
-
   const handleChange = useCallback(
     (e: ChangeEvent<HTMLTextAreaElement>): void => {
-      setMarkdown(e.target.value);
       retrieveValue(e.target.value);
     },
     [retrieveValue],
@@ -44,7 +42,7 @@ const Textarea: React.FC<TextareaProps> = props => {
     <Container
       ref={textAreaRef}
       onChange={handleChange}
-      value={markdown}
+      value={value}
       defaultValue={defaultValue}
       placeholder={placeholder}
     />
