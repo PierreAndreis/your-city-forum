@@ -10,16 +10,17 @@ import { NakedInput, Textarea, MarkdownViewer, Loading } from '..';
 
 import { Container, Content, ModalBox, Footer } from './styles';
 
-interface TopicModalProps {
-  closeModal(): void;
-}
-
 interface FormData {
   title: string;
   content: string;
 }
 
-const TopicModal: React.FC<TopicModalProps> = ({ closeModal }) => {
+interface TopicModalProps {
+  closeModal(): void;
+  newTopic(): void;
+}
+
+const TopicModal: React.FC<TopicModalProps> = ({ closeModal, newTopic }) => {
   const [toggleMdViewer, setToggleMdViewer] = useState(false);
   const [markdown, setMarkdown] = useState('');
   const [loading, setLoading] = useState(false);
@@ -56,6 +57,8 @@ const TopicModal: React.FC<TopicModalProps> = ({ closeModal }) => {
           content,
         });
 
+        newTopic();
+
         handleCloseModal();
 
         toast('Tópico criado com sucesso!', { type: 'success' });
@@ -76,7 +79,7 @@ const TopicModal: React.FC<TopicModalProps> = ({ closeModal }) => {
         setLoading(false);
       }
     },
-    [handleCloseModal],
+    [newTopic, handleCloseModal],
   );
 
   return (

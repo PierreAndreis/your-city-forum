@@ -40,23 +40,27 @@ const Dashboard: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [opinions, setOpinions] = useState<Opinion[]>([]);
 
-  useEffect(() => {
-    async function loadData(): Promise<void> {
-      try {
-        setLoading(true);
+  const loadData = useCallback(async () => {
+    try {
+      setLoading(true);
 
-        const response = await api.get<ApiResponse>('/opinions');
+      const response = await api.get<ApiResponse>('/opinions');
 
-        setOpinions(response.data.opinions);
-      } catch (err) {
-        toast('Erro inesperado, relogue e tente novamente', { type: 'error' });
-      } finally {
-        setLoading(false);
-      }
+      setOpinions(response.data.opinions);
+    } catch (err) {
+      toast('Erro inesperado, relogue e tente novamente', { type: 'error' });
+    } finally {
+      setLoading(false);
     }
-
-    loadData();
   }, []);
+
+  useEffect(() => {
+    loadData();
+  }, [loadData]);
+
+  const handleNewTopic = useCallback(() => {
+    loadData();
+  }, [loadData]);
 
   const handleToggleTopicModal = useCallback(() => {
     setToggleTopicVisible(state => !state);
@@ -93,7 +97,7 @@ const Dashboard: React.FC = () => {
             ) : (
               <TopicsList>
                 {opinions.map(opinion => (
-                  <TopicItem opinion={opinion} />
+                  <TopicItem key={opinion.id} opinion={opinion} />
                 ))}
               </TopicsList>
             )}
@@ -101,7 +105,12 @@ const Dashboard: React.FC = () => {
         </Wrapper>
       </Container>
 
-      {toggleTopicVisible && <TopicModal closeModal={handleToggleTopicModal} />}
+      {toggleTopicVisible && (
+        <TopicModal
+          newTopic={handleNewTopic}
+          closeModal={handleToggleTopicModal}
+        />
+      )}
     </>
   );
 };

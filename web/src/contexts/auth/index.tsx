@@ -10,7 +10,7 @@ const AuthContainer: React.FC = ({ children }) => {
     const token = localStorage.getItem('@LOUNDgg:token');
 
     if (token) {
-      api.defaults.headers.authorization = `Bearer ${token}`;
+      api.defaults.headers.authorization = `Bearer ${token.replace('"', '')}`;
 
       return { logged: true };
     }
@@ -29,7 +29,7 @@ const AuthContainer: React.FC = ({ children }) => {
 
       localStorage.setItem('@LOUNDgg:token', JSON.stringify(token));
 
-      api.defaults.headers.authorization = `Bearer ${token}`;
+      api.defaults.headers.authorization = `Bearer ${token.replace('"', '')}`;
 
       setData({ logged: !!token });
     },
