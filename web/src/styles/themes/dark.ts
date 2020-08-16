@@ -11,6 +11,7 @@ export default {
     secundaryLighter: '#3c3c42',
     secundaryLight: '#29292e',
     secundary: '#202024',
+    secundaryDark: '#141316',
     textInPrimary: '#ffffff',
     textInDark: '#D6D6D6',
     textInSecundary: '#70737d',

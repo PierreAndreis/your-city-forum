@@ -2,7 +2,13 @@ import React, { useCallback } from 'react';
 import { Form } from '@unform/web';
 import { FiPlus } from 'react-icons/fi';
 
-import { Header, SearchInput, TopicItem, Loading } from '../../components';
+import {
+  Header,
+  SearchInput,
+  TopicItem,
+  Loading,
+  TopicModal,
+} from '../../components';
 
 import {
   Container,
@@ -22,39 +28,43 @@ const Dashboard: React.FC = () => {
   }, []);
 
   return (
-    <Container>
-      <Header />
+    <>
+      <Container>
+        <Header />
 
-      <Wrapper>
-        <ContentContainer>
-          <Form onSubmit={handleSearchSubmit}>
-            <ActionsContainer>
-              <SearchInput name="filter" />
+        <Wrapper>
+          <ContentContainer>
+            <Form onSubmit={handleSearchSubmit}>
+              <ActionsContainer>
+                <SearchInput name="filter" />
 
-              <button type="button">
-                Criar tópico
-                <FiPlus size={18} />
-              </button>
-            </ActionsContainer>
-          </Form>
+                <button type="button">
+                  Criar tópico
+                  <FiPlus size={18} />
+                </button>
+              </ActionsContainer>
+            </Form>
 
-          {/* <Loading
+            {/* <Loading
             containerStyle={{ marginTop: '-200px' }}
             size={70}
             color="#00FF66"
           /> */}
 
-          <TopicsList>
-            <TopicItem />
+            <TopicsList>
+              <TopicItem />
 
-            <TopicItem />
-            <TopicItem />
-            <TopicItem />
-            <TopicItem />
-          </TopicsList>
-        </ContentContainer>
-      </Wrapper>
-    </Container>
+              <TopicItem />
+              <TopicItem />
+              <TopicItem />
+              <TopicItem />
+            </TopicsList>
+          </ContentContainer>
+        </Wrapper>
+      </Container>
+
+      <TopicModal />
+    </>
   );
 };
 

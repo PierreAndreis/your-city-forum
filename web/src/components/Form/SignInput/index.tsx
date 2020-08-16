@@ -12,7 +12,7 @@ interface Props {
 
 type InputProps = JSX.IntrinsicElements['input'] & Props;
 
-const Input: React.FC<InputProps> = props => {
+const SignInput: React.FC<InputProps> = props => {
   const { name, label, icon: Icon, ...rest } = props;
 
   const inputRef = useRef<HTMLInputElement>(null);
@@ -65,4 +65,4 @@ const Input: React.FC<InputProps> = props => {
   );
 };
 
-export default Input;
+export default SignInput;

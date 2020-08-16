@@ -9,6 +9,7 @@ export interface DefaultThemeColors {
     secundaryLighter: string;
     secundaryLight: string;
     secundary: string;
+    secundaryDark: string;
     textInPrimary: string;
     textInDark: string;
     textInSecundary: string;

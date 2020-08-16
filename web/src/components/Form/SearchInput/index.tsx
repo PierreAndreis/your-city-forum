@@ -10,7 +10,7 @@ interface Props {
 
 type InputProps = JSX.IntrinsicElements['input'] & Props;
 
-const SearchInput: React.FC<InputProps> = ({ name }) => {
+const SearchInput: React.FC<InputProps> = ({ name, ...rest }) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const { fieldName, registerField, defaultValue } = useField(name);
 
@@ -51,6 +51,7 @@ const SearchInput: React.FC<InputProps> = ({ name }) => {
         onBlur={handleInputBlur}
         defaultValue={defaultValue}
         placeholder="Procure por título"
+        {...rest}
       />
     </Container>
   );

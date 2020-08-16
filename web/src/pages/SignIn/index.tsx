@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 import { useAuth } from '../../contexts/auth/authContext';
 import getValidationsErrors from '../../utils/getValidationErrors';
 
-import { Input, Button, Loading } from '../../components';
+import { SignInput, Button, Loading } from '../../components';
 
 import {
   Container,
@@ -88,7 +88,7 @@ const SignIn: React.FC = () => {
           <h1>Sign In</h1>
 
           <Form ref={formRef} onSubmit={handleSubmit}>
-            <Input
+            <SignInput
               name="username"
               autoComplete="off"
               label="Nome de usuário"
@@ -96,7 +96,7 @@ const SignIn: React.FC = () => {
               placeholder="John Doe"
             />
 
-            <Input
+            <SignInput
               name="password"
               type="password"
               label="Senha"
