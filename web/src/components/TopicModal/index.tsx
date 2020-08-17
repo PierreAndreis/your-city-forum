@@ -93,6 +93,7 @@ const TopicModal: React.FC<TopicModalProps> = ({ closeModal, newTopic }) => {
               type="button"
               aria-label="Close Button"
               onClick={handleCloseModal}
+              data-testid="close-modal-button"
             >
               <FiX />
             </button>
@@ -123,6 +124,7 @@ const TopicModal: React.FC<TopicModalProps> = ({ closeModal, newTopic }) => {
                   type="button"
                   aria-label="Markdown toggle button"
                   onClick={handleToggleViewer}
+                  data-testid="toggle-viewer-button"
                 >
                   {toggleMdViewer ? <FiEyeOff /> : <FiEye />}
                 </button>
