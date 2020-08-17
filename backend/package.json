@@ -13,7 +13,7 @@
     "prebuild": "yarn clean && yarn db:generate",
     "build": "cross-env NODE_ENV=production tsc ",
     "predev": "yarn clean && yarn db:generate",
-    "dev:server": "cross-env NODE_ENV=development tsnd --no-notify --rs src/index.ts --no-notify",
+    "dev": "cross-env NODE_ENV=development tsnd --no-notify --rs src/index.ts --no-notify",
     "start": "cross-env NODE_ENV=production node dist/index.js"
   },
   "devDependencies": {
