@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect } from 'react';
+import React, { useCallback, useState, useEffect, useMemo } from 'react';
 import { Form } from '@unform/web';
 import { FiPlus } from 'react-icons/fi';
 import { toast } from 'react-toastify';
@@ -39,6 +39,21 @@ const Dashboard: React.FC = () => {
   const [toggleTopicVisible, setToggleTopicVisible] = useState(false);
   const [loading, setLoading] = useState(false);
   const [opinions, setOpinions] = useState<Opinion[]>([]);
+  const [filter, setFilter] = useState('');
+
+  const filteredOpinions = useMemo(() => {
+    if (filter) {
+      return opinions.filter(opinion => {
+        if (filter) {
+          return opinion.title.toLowerCase() === filter.toLowerCase();
+        }
+
+        return opinion;
+      });
+    }
+
+    return opinions;
+  }, [opinions, filter]);
 
   const loadData = useCallback(async () => {
     try {
@@ -67,7 +82,7 @@ const Dashboard: React.FC = () => {
   }, []);
 
   const handleSearchSubmit = useCallback((data: FormData) => {
-    console.log(data);
+    setFilter(data.filter);
   }, []);
 
   return (
@@ -96,7 +111,7 @@ const Dashboard: React.FC = () => {
               />
             ) : (
               <TopicsList>
-                {opinions.map(opinion => (
+                {filteredOpinions.map(opinion => (
                   <TopicItem key={opinion.id} opinion={opinion} />
                 ))}
               </TopicsList>
