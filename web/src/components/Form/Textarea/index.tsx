@@ -15,7 +15,7 @@ const Textarea: React.FC<TextareaProps> = props => {
   const { name, placeholder, retrieveValue, value } = props;
 
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
-  const { fieldName, registerField, defaultValue } = useField(name);
+  const { fieldName, registerField } = useField(name);
 
   const handleChange = useCallback(
     (e: ChangeEvent<HTMLTextAreaElement>): void => {
@@ -37,7 +37,6 @@ const Textarea: React.FC<TextareaProps> = props => {
       ref={textAreaRef}
       onChange={handleChange}
       value={value}
-      defaultValue={defaultValue}
       placeholder={placeholder}
     />
   );
