@@ -41,7 +41,11 @@ const SignInput: React.FC<InputProps> = props => {
 
   return (
     <>
-      <Container isFilled={Number(isFilled)} isFocused={Number(isFocused)}>
+      <Container
+        isFilled={Number(isFilled)}
+        isFocused={Number(isFocused)}
+        data-testid="input-container"
+      >
         <label htmlFor={fieldName}>
           {label && label}
           <InputContainer>
@@ -55,7 +59,7 @@ const SignInput: React.FC<InputProps> = props => {
               {...rest}
             />
 
-            {Icon && <Icon size={20} />}
+            {Icon && <Icon data-testid="input-icon" size={20} />}
           </InputContainer>
         </label>
 
