@@ -10,6 +10,10 @@ export const Container = styled.div`
   z-index: 999;
   top: 0;
   background: ${({ theme: { colors } }) => colors.secundary};
+
+  @media (max-width: 600px) {
+    height: 7rem;
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -78,11 +82,11 @@ export const Profile = styled.aside`
   }
 
   @media (max-width: 600px) {
-    strong {
+    img {
       display: none;
     }
 
-    span {
+    strong {
       display: none;
     }
   }

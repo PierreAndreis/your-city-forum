@@ -8,14 +8,15 @@ import { AuthState, SignInCredentials } from './types';
 const AuthContainer: React.FC = ({ children }) => {
   const [data, setData] = useState<AuthState>(() => {
     const token = localStorage.getItem('@LOUNDgg:token');
+    const username = localStorage.getItem('@LOUDgg:username');
 
-    if (token) {
+    if (token && username) {
       api.defaults.headers.authorization = `Bearer ${token.replace('"', '')}`;
 
-      return { logged: true };
+      return { logged: true, user: { username } };
     }
 
-    return { logged: false };
+    return {} as AuthState;
   });
 
   const signIn = useCallback(
@@ -28,23 +29,27 @@ const AuthContainer: React.FC = ({ children }) => {
       const { token } = response.data;
 
       localStorage.setItem('@LOUNDgg:token', JSON.stringify(token));
+      localStorage.setItem('@LOUDgg:username', username);
 
       api.defaults.headers.authorization = `Bearer ${token.replace('"', '')}`;
 
-      setData({ logged: !!token });
+      setData({ logged: !!token, user: { username } });
     },
     [],
   );
 
   const signOut = useCallback(() => {
     localStorage.removeItem('@LOUNDgg:token');
+    localStorage.removeItem('@LOUDgg:username');
 
-    setData({ logged: false });
+    setData({ logged: false, user: { username: '' } });
   }, []);
 
   const payload = useMemo(() => {
-    return { logged: data.logged, signIn, signOut };
-  }, [data.logged, signIn, signOut]);
+    const { logged, user } = data;
+
+    return { logged, user, signIn, signOut };
+  }, [data, signIn, signOut]);
 
   return <AuthProvider value={payload}>{children}</AuthProvider>;
 };

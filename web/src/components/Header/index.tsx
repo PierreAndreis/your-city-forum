@@ -7,7 +7,7 @@ import { useAuth } from '../../contexts/auth/authContext';
 import { Container, Wrapper, Profile } from './styles';
 
 const Header: React.FC = () => {
-  const { signOut } = useAuth();
+  const { signOut, user } = useAuth();
 
   return (
     <Container aria-label="Dashboard header">
@@ -17,7 +17,7 @@ const Header: React.FC = () => {
             src="https://api.adorable.io/avatars/140/abott@adorable.png"
             alt="Avatar"
           />
-          <strong>Olá</strong> <span>Dtesch</span>
+          <strong>Olá</strong> <span>{user.username}</span>
         </Profile>
 
         <Link to="/">Fórum</Link>
