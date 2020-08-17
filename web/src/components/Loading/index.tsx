@@ -4,7 +4,7 @@ import { FaCircleNotch } from 'react-icons/fa';
 import { Container } from './styles';
 
 interface LoadingProps {
-  size: number;
+  size?: number;
   color: string;
   containerStyle?: Record<string, unknown>;
 }

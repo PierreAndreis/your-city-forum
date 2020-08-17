@@ -17,7 +17,7 @@ const Button: React.FC<ButtonProps> = props => {
     <Container style={containerStyle}>
       <button type="button" {...rest}>
         {children}
-        {Icon && <Icon size={20} />}
+        {Icon && <Icon size={20} data-testid="button-icon" />}
       </button>
     </Container>
   );

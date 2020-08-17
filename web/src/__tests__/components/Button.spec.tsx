@@ -7,8 +7,12 @@ import { Button } from '../../components';
 
 describe('Button component', () => {
   it('should be able to render Button component', () => {
-    const { getByText } = render(<Button icon={FiUser}>Test button</Button>);
+    const { getByText, getByTestId } = render(
+      <Button icon={FiUser}>Test button</Button>,
+    );
 
     expect(getByText('Test button')).toBeTruthy();
+
+    expect(getByTestId('button-icon')).toBeTruthy();
   });
 });
