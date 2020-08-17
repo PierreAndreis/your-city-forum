@@ -41,7 +41,7 @@ const SearchInput: React.FC<InputProps> = ({ name, ...rest }) => {
       aria-label="Search Bar"
     >
       <button type="submit" aria-label="Search Button">
-        <FiSearch size={20} />
+        <FiSearch data-testid="input-icon" size={20} />
       </button>
 
       <input
