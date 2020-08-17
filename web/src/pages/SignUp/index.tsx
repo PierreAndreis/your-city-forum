@@ -78,6 +78,8 @@ const SignUp: React.FC = () => {
           const errors = getValidationsErrors(err);
 
           formRef.current?.setErrors(errors);
+
+          return;
         }
 
         toast(
