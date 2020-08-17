@@ -1,6 +1,6 @@
 import React from 'react';
 import * as toastify from 'react-toastify';
-import { fireEvent, act, waitFor } from '@testing-library/react';
+import { fireEvent, waitFor } from '@testing-library/react';
 import MockAdapter from 'axios-mock-adapter';
 
 import render from '../utils/render';
