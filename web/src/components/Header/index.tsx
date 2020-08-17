@@ -22,7 +22,12 @@ const Header: React.FC = () => {
 
         <Link to="/">Fórum</Link>
 
-        <button aria-label="Logout" type="button" onClick={signOut}>
+        <button
+          aria-label="Logout"
+          type="button"
+          onClick={signOut}
+          data-testid="sign-out-button"
+        >
           <FiPower size={20} />
         </button>
       </Wrapper>
