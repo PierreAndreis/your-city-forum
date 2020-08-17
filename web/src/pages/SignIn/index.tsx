@@ -2,7 +2,7 @@ import React, { useCallback, useRef, useState } from 'react';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 import { FiLock, FiUser, FiChevronRight } from 'react-icons/fi';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 
@@ -25,6 +25,7 @@ interface SignInFormData {
 
 const SignIn: React.FC = () => {
   const { signIn } = useAuth();
+  const { push } = useHistory();
   const formRef = useRef<FormHandles>(null);
 
   const [loading, setLoading] = useState(false);
@@ -61,6 +62,8 @@ const SignIn: React.FC = () => {
           username,
           password,
         });
+
+        push('/dashboard');
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationsErrors(err);
@@ -80,7 +83,7 @@ const SignIn: React.FC = () => {
         setLoading(false);
       }
     },
-    [signIn],
+    [signIn, push],
   );
 
   return (
