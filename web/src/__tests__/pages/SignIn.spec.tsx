@@ -71,7 +71,7 @@ describe('SignIn page', () => {
     });
   });
 
-  it('should display an toast message if sign in fails', async () => {
+  it('should display a toast message if sign in fails', async () => {
     mockSignIn.mockImplementation(() => {
       throw new Error();
     });

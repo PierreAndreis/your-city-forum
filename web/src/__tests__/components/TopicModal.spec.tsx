@@ -134,7 +134,7 @@ describe('TopicModal component', () => {
     });
   });
 
-  it('should display an toast message if submit without credentials', async () => {
+  it('should display a toast message if submit without credentials', async () => {
     const { getByText, getByPlaceholderText } = render(
       <TopicModal closeModal={mockCloseModal} newTopic={mockNewTopic} />,
     );
@@ -161,7 +161,7 @@ describe('TopicModal component', () => {
     );
   });
 
-  it('should display an toast message if api call fails', async () => {
+  it('should display a toast message if api call fails', async () => {
     mockApi.onPost('/opinions').reply(500);
 
     const { getByText, getByPlaceholderText } = render(

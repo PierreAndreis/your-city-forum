@@ -84,7 +84,7 @@ describe('SignUp page', () => {
     });
   });
 
-  it('should display an toast message if api call fails', async () => {
+  it('should display a toast message if api call fails', async () => {
     mockApi.onPost('/register').reply(500);
 
     const { getByPlaceholderText, getByText } = render(<SignUp />);
