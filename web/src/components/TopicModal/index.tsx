@@ -59,12 +59,16 @@ const TopicModal: React.FC<TopicModalProps> = ({ closeModal, newTopic }) => {
 
         newTopic();
 
+        setLoading(false);
+
         handleCloseModal();
 
         toast('Tópico criado com sucesso!', { type: 'success' });
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           toast('Preecha todos os dados corretamente!', { type: 'warning' });
+
+          setLoading(false);
 
           return;
         }
@@ -75,7 +79,7 @@ const TopicModal: React.FC<TopicModalProps> = ({ closeModal, newTopic }) => {
             type: 'error',
           },
         );
-      } finally {
+
         setLoading(false);
       }
     },

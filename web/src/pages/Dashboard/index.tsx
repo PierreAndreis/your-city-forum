@@ -44,11 +44,7 @@ const Dashboard: React.FC = () => {
   const filteredOpinions = useMemo(() => {
     if (filter) {
       return opinions.filter(opinion => {
-        if (filter) {
-          return opinion.title.toLowerCase() === filter.toLowerCase();
-        }
-
-        return opinion;
+        return opinion.title.toLowerCase() === filter.toLowerCase();
       });
     }
 
