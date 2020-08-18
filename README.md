@@ -73,8 +73,9 @@ A RESTful API using Node.js with Express
 2. Go inside the folder `cd your-city-forum`;
 3. Run `$ yarn` to install dependencies;
 4. Run `$ yarn db:migrate` to run all migrations;
-5. You can use insomnia to try the routes if you whant ![Download Insomnia](https://insomnia.rest/images/run.svg)
-
+5. You can use insomnia to try the routes if you whant <a href="https://insomnia.rest/run/?label=%40loudgg%2Ffront-end-exercise&uri=https%3A%2F%2Fsp-opinions-docs.pierreortega.dev%2Finsomnia.json">
+    ![Download Insomnia](https://insomnia.rest/images/run.svg)
+</a>
 
 ## Run 🔥 
 1. Run `$ yarn dev` to run the server;
