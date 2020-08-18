@@ -37,7 +37,7 @@
   - [Helper development tools](#-helper-development-tools)
   - [Install](#install--1)
   - [Run](#run--1)
-  - [Usage Tips](#usage-tips)
+- [Usage Tips](#usage-tips)
 - [Contato](#contato)
 - [License](#memo-license)
   
