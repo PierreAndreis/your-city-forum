@@ -28,7 +28,7 @@ const AuthContainer: React.FC = ({ children }) => {
 
       const { token } = response.data;
 
-      localStorage.setItem('@LOUNDgg:token', JSON.stringify(token));
+      localStorage.setItem('@LOUNDgg:token', token);
       localStorage.setItem('@LOUDgg:username', username);
 
       api.defaults.headers.authorization = `Bearer ${token.replace('"', '')}`;
@@ -42,7 +42,7 @@ const AuthContainer: React.FC = ({ children }) => {
     localStorage.removeItem('@LOUNDgg:token');
     localStorage.removeItem('@LOUDgg:username');
 
-    setData({ logged: false, user: { username: '' } });
+    setData({} as AuthState);
   }, []);
 
   const payload = useMemo(() => {

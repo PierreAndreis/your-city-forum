@@ -53,6 +53,7 @@
   },
   "devDependencies": {
     "@testing-library/dom": "^7.22.2",
+    "@testing-library/react-hooks": "^3.4.1",
     "@types/react-router-dom": "^5.1.5",
     "@types/styled-components": "^5.1.2",
     "@types/yup": "^0.29.4",
@@ -69,6 +70,7 @@
     "eslint-plugin-react": "^7.20.0",
     "eslint-plugin-react-hooks": "^4",
     "jest-environment-jsdom-sixteen": "^1.0.3",
-    "prettier": "^2.0.5"
+    "prettier": "^2.0.5",
+    "react-test-renderer": "^16.13.1"
   }
 }
