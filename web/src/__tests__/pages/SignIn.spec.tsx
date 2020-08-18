@@ -1,19 +1,15 @@
 import React from 'react';
 import * as toastify from 'react-toastify';
 import { fireEvent, waitFor } from '@testing-library/react';
-import MockAdapter from 'axios-mock-adapter';
 
 import render from '../utils/render';
 
-import api from '../../services/api';
 import SignIn from '../../pages/SignIn';
 
 const toastSpy = jest.spyOn(toastify, 'toast');
 
 const mockPush = jest.fn();
 const mockSignIn = jest.fn();
-
-const mockApi = new MockAdapter(api);
 
 jest.mock('react-router-dom', () => ({
   Link: ({ children }: { children: React.ReactNode }) => children,
@@ -31,8 +27,6 @@ jest.mock('../../contexts/auth/authContext', () => ({
 describe('SignIn page', () => {
   beforeEach(() => {
     jest.clearAllMocks();
-
-    mockApi.reset();
   });
 
   it('should be able to render SignIn page', () => {

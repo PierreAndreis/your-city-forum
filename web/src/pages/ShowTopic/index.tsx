@@ -35,10 +35,10 @@ const ShowTopic: React.FC = () => {
   useEffect(() => {
     if (!routeParams.state) {
       push('/dashboard');
-    }
-  }, [routeParams, push]);
 
-  useEffect(() => {
+      return;
+    }
+
     const { opinionId } = routeParams.state;
 
     async function loadData(): Promise<void> {
@@ -49,14 +49,14 @@ const ShowTopic: React.FC = () => {
 
         setOpinion(response.data);
       } catch (err) {
-        toast('Erro inesperado, relogue e tente novamente');
+        toast('Erro inesperado, relogue e tente novamente', { type: 'error' });
       } finally {
         setLoading(false);
       }
     }
 
     loadData();
-  }, [routeParams.state]);
+  }, [routeParams.state, push]);
 
   const handlePlusClick = useCallback(async () => {
     const { opinionId } = routeParams.state;
@@ -111,6 +111,7 @@ const ShowTopic: React.FC = () => {
                     aria-label="Plus vote"
                     type="button"
                     onClick={handlePlusClick}
+                    data-testid="plus-vote-button"
                   >
                     <FiChevronUp />
                   </button>
@@ -119,6 +120,7 @@ const ShowTopic: React.FC = () => {
                     aria-label="Minus vote"
                     type="button"
                     onClick={handleMinusClick}
+                    data-testid="minus-vote-button"
                   >
                     <FiChevronDown />
                   </button>
