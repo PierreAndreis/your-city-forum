@@ -43,6 +43,7 @@ export const Wrapper = styled.div`
     background: none;
     border: 0;
     color: ${({ theme: { colors } }) => colors.primary};
+    cursor: pointer;
     transition: color 400ms;
 
     &:hover {
