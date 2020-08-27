@@ -115,7 +115,9 @@ const ShowTopic: React.FC = () => {
                   >
                     <FiChevronUp />
                   </button>
+
                   <span>{opinion.upvotes?.length || 0}</span>
+
                   <button
                     aria-label="Minus vote"
                     type="button"

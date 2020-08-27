@@ -26,7 +26,8 @@ export const Container = styled(ReactMarkdown)`
 
   p {
     display: flex;
-    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
     margin-top: 1.2rem;
     font-size: 2.2rem;
 

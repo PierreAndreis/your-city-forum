@@ -46,6 +46,7 @@ const SignIn: React.FC = () => {
               'Não utilize caracteres especiais | Min 4 Caracteres',
             )
             .required('Preencha seu nome de usuário'),
+
           password: Yup.string()
             .matches(
               /^[a-zA-Z0-9]{8,30}$/,
