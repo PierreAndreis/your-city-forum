@@ -58,7 +58,7 @@ const ShowTopic: React.FC = () => {
     loadData();
   }, [routeParams.state, push]);
 
-  const handlePlusClick = useCallback(async () => {
+  const handlePlusClick = async (): Promise<void> => {
     const { opinionId } = routeParams.state;
 
     try {
@@ -72,9 +72,9 @@ const ShowTopic: React.FC = () => {
         type: 'error',
       });
     }
-  }, [routeParams.state, push]);
+  };
 
-  const handleMinusClick = useCallback(async () => {
+  const handleMinusClick = async (): Promise<void> => {
     const { opinionId } = routeParams.state;
 
     try {
@@ -88,7 +88,7 @@ const ShowTopic: React.FC = () => {
         type: 'error',
       });
     }
-  }, [routeParams.state, push]);
+  };
 
   return (
     <>
