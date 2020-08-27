@@ -29,13 +29,13 @@ const TopicModal: React.FC<TopicModalProps> = ({ closeModal, newTopic }) => {
     closeModal();
   }, [closeModal]);
 
-  const handleToggleViewer = useCallback(() => {
+  const handleToggleViewer = (): void => {
     setToggleMdViewer(state => !state);
-  }, []);
+  };
 
-  const handleTextareaChange = useCallback((mdValue: string) => {
+  const handleTextareaChange = (mdValue: string): void => {
     setMarkdown(mdValue);
-  }, []);
+  };
 
   const handleSubmitForm = useCallback(
     async (payload: FormData) => {
