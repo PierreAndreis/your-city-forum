@@ -44,7 +44,7 @@ const Dashboard: React.FC = () => {
   const filteredOpinions = useMemo(() => {
     if (filter) {
       return opinions.filter(opinion => {
-        return opinion.title.toLowerCase() === filter.toLowerCase();
+        return opinion.title.toLowerCase().includes(filter.toLowerCase());
       });
     }
 
@@ -69,17 +69,17 @@ const Dashboard: React.FC = () => {
     loadData();
   }, [loadData]);
 
-  const handleNewTopic = useCallback(() => {
+  const handleNewTopic = (): void => {
     loadData();
-  }, [loadData]);
+  };
 
-  const handleToggleTopicModal = useCallback(() => {
+  const handleToggleTopicModal = (): void => {
     setToggleTopicVisible(state => !state);
-  }, []);
+  };
 
-  const handleSearchSubmit = useCallback((data: FormData) => {
+  const handleSearchSubmit = (data: FormData): void => {
     setFilter(data.filter);
-  }, []);
+  };
 
   return (
     <>
