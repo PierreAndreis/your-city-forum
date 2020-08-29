@@ -9,6 +9,8 @@ import { toast } from 'react-toastify';
 import { useAuth } from '../../contexts/auth/authContext';
 import getValidationsErrors from '../../utils/getValidationErrors';
 
+import { SignInFormData } from './types';
+
 import { SignInput, Button, Loading } from '../../components';
 
 import {
@@ -17,11 +19,6 @@ import {
   ContainerAnimated,
   ButtonsContainer,
 } from './styles';
-
-interface SignInFormData {
-  username: string;
-  password: string;
-}
 
 const SignIn: React.FC = () => {
   const { signIn } = useAuth();

@@ -1,29 +1,15 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import { FiChevronUp, FiChevronDown } from 'react-icons/fi';
 import { toast } from 'react-toastify';
 
 import api from '../../services/api';
 
+import { RouteParams, Opinion } from './types';
+
 import { Header, MarkdownViewer, Loading } from '../../components';
 
 import { Container, Wrapper, ContentContainer, TopicContainer } from './styles';
-
-interface RouteParams {
-  opinionId: number;
-}
-
-interface Upvotes {
-  opinion_id: number;
-  user_id: string;
-}
-
-interface Opinion {
-  id: number;
-  title: string;
-  content: string;
-  upvotes: Upvotes[];
-}
 
 const ShowTopic: React.FC = () => {
   const routeParams = useLocation<RouteParams>();

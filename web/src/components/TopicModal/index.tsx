@@ -5,20 +5,11 @@ import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 
 import api from '../../services/api';
+import { FormData, TopicModalProps } from './types';
 
 import { NakedInput, Textarea, MarkdownViewer, Loading } from '..';
 
 import { Container, Content, ModalBox, Footer } from './styles';
-
-interface FormData {
-  title: string;
-  content: string;
-}
-
-interface TopicModalProps {
-  closeModal(): void;
-  newTopic(): void;
-}
 
 const TopicModal: React.FC<TopicModalProps> = ({ closeModal, newTopic }) => {
   const [toggleMdViewer, setToggleMdViewer] = useState(false);

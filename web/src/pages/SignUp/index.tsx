@@ -7,6 +7,8 @@ import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 
 import api from '../../services/api';
+import { SignUpFormData } from './types';
+
 import getValidationsErrors from '../../utils/getValidationErrors';
 import { SignInput, Button, Loading } from '../../components';
 
@@ -16,12 +18,6 @@ import {
   ContainerAnimated,
   ButtonsContainer,
 } from './styles';
-
-interface SignUpFormData {
-  email: string;
-  username: string;
-  password: string;
-}
 
 const SignUp: React.FC = () => {
   const { push } = useHistory();

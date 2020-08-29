@@ -5,6 +5,8 @@ import { toast } from 'react-toastify';
 
 import api from '../../services/api';
 
+import { Opinion, ApiResponse, FormData } from './types';
+
 import {
   Header,
   SearchInput,
@@ -20,20 +22,6 @@ import {
   ActionsContainer,
   TopicsList,
 } from './styles';
-
-interface Opinion {
-  id: number;
-  title: string;
-  upvotes_count: number;
-}
-
-interface ApiResponse {
-  opinions: Opinion[];
-}
-
-interface FormData {
-  filter: string;
-}
 
 const Dashboard: React.FC = () => {
   const [toggleTopicVisible, setToggleTopicVisible] = useState(false);
